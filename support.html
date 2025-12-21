@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Support Hub - UbianWorld</title>
+        <link rel="stylesheet" href="styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <script src="script.js" defer></script> 
+    </head>
+
+    <body>
+        <header>
+    <div class="brand-container">
+        <img src="logo.jpg" alt="ISSO Logo" class="header-logo">
+        <span class="brand-text">ISSO</span>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="announcement.html">Announcement</a></li>
+            <li><a href="guides.html">Guides & Forms</a></li>
+            <li><a href="support.html" class="active">Support</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="login-button"><a href="login.html" id="auth-link">Log In</a></li>
+        </ul>
+    </nav>
+</header>
+
+        <!-- Added FAQ modal for add/edit functionality -->
+        <div id="faq-modal" class="modal-overlay" style="display: none;">
+            <div class="modal-content" style="max-width: 600px;">
+                <div class="modal-header">
+                    <h2 id="faq-modal-title">Add New FAQ</h2>
+                    <button class="modal-close" onclick="closeFAQModal()">&times;</button>
+                </div>
+                <form id="faq-form">
+                    <input type="hidden" id="faq-id">
+                    
+                    <div class="form-group">
+                        <label for="faq-question">Question:</label>
+                        <input type="text" id="faq-question" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="faq-answer">Answer:</label>
+                        <textarea id="faq-answer" rows="6" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="faq-category">Category:</label>
+                        <select id="faq-category" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                            <option value="General">General</option>
+                            <option value="Visa">Visa Related</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="faq-display-order">Display Order:</label>
+                        <input type="number" id="faq-display-order" value="0" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" onclick="closeFAQModal()" class="btn-secondary">Cancel</button>
+                        <button type="submit" class="cta-button">Save FAQ</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- </CHANGE> -->
+
+        <main>
+            <section id="faq" class="container">
+                <h2>❓ Frequently Asked Questions</h2>
+                <p class="section-description">Below are the most common questions from international students. Click a question to see the answer.</p>
+
+                <!-- Removed duplicate hardcoded FAQ HTML, keeping only dynamic containers -->
+                <div id="general-faq-container" class="faq-accordion-container">
+                    </div>
+
+                <h2 id="visa-title" style="display: none;">VISA RELATED CONCERNS</h2>
+
+                <div id="visa-faq-container" class="faq-accordion-container">
+                    </div>
+            </section>
+
+            <section id="inquiry-cta" class="container inquiry-section">
+                <h2>Can't Find Your Answer?</h2>
+                
+                <!-- Added login prompt container for non-authenticated users -->
+                <div id="login-prompt-wrapper" style="display: none;">
+                    <div class="inquiry-card" style="text-align: center; padding: 40px;">
+                        <h3>Submit a New Inquiry Ticket</h3>
+                        <p style="margin: 20px 0; color: #666;">You must be logged in as a student to submit inquiry tickets.</p>
+                        <a href="login.html" class="cta-button" style="display: inline-block;">Log In to Submit Inquiry</a>
+                        <p style="margin-top: 20px; font-size: 14px;">Don't have an account? <a href="signup.html">Sign up here</a></p>
+                    </div>
+                </div>
+
+                <div id="inquiry-submission-wrapper">
+                    <div class="inquiry-card">
+                        <h3>Submit a New Inquiry Ticket</h3>
+                        
+                        <form id="inquiry-form">
+                            <div class="form-group">
+                                <label for="student-id">University ID / Student ID</label>
+                                <input type="text" id="student-id" name="student_id" placeholder="e.g., UBA-12345" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject of Inquiry</label>
+                                <input type="text" id="subject" name="subject" placeholder="e.g., Visa extension or Document status" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="description">Detailed Description of Issue/Request</label>
+                                <textarea id="description" name="description" rows="6" placeholder="Please describe your issue clearly and include relevant dates or document names." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="cta-button">Submit Inquiry</button>
+                            
+                            <div id="form-message" style="margin-top: 15px; text-align: center;"></div>
+                        </form>
+                        
+                        <a href="contact.html" class="cta-button secondary-cta" style="margin-top: 20px;">View ISSO Contact Details</a>
+                    </div>
+                </div>
+             </section>
+
+        </main>
+
+        <footer>
+            <div class="container footer-content">
+                <div class="footer-col">
+                    <h3>About UbianWorld</h3>
+                    <p>Your go-to platform for university support, announcements, and resources at the University of Batangas. Empowering students and staff with easy access to information.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="announcement.html">Announcements</a></li>
+                        <li><a href="guides.html">Guides & Forms</a></li>
+                        <li><a href="support.html">Support</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <p>Email: info@ubianworld.edu.ph</p>
+                    <p>Phone: +63 123 456 7890</p>
+                    <p>Address: University of Batangas, Batangas City, Philippines</p>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
